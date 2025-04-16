@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Log In</title>
+        <link type="text/css" rel="stylesheet" href="css/loginStyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="icon" href="#" />
+    </head>
+
+    <body>
+        <img id="messImg" class="profile-image" src="img/message1.jpeg" style="float: right; top: 0px; width: 60px;
+             height: 60px; display: none;" onclick="owner_messages();">
+        <img id="alertImg" class="profile-image" src="img/alert.jpeg" style="float: right; top: 2cm; left:1.6cm; width: 60px;
+             height: 60px; display: none;" onclick="owner_bookings();">
+        <div id="messageContainer" style="display: none; color: black;" class="message-container">
+            <h3>Your messages</h3>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>booking_id</th>
+                        <th>sender</th>
+                        <th>message</th>
+                    </tr>
+                </thead>
+                <tbody id="message_table"></tbody>
+            </table>
+            <br><br>
+
+            <h3>Sent a messages</h3>
+            <form id="messageForm" name="messageForm" onsubmit='messagePost(); return false;'>
+                <input type="text" id="sender" name="sender" placeholder="keeper/owner"
+                       required><br>
+                <input type="text" id="booking_id" name="booking_id" placeholder="Enter booking_id"
+                       required><br>
+                <input type="text" id="message" name="message" placeholder="Enter message"
+                       required><br>
+                
+                <input type="submit" value="Send" id="submitButton">
+                <div id="mess"></div>
+            </form>
+        </div>
+        
+        <div id="bookingsContainer" style="display: none; color: black;" class="message-container" >
+            <h3>Booking</h3>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>pet_id</th>
+                        <th>fromdate</th>
+                        <th>todate</th>
+                        <th>price</th>
+                        <th>keeper_id</th>
+                    </tr>
+                </thead>
+                <tbody id="booking_table"></tbody>
+            </table>
+            
+            <br>
+            <button onclick="finish()" id="finish_button" style="display: none;">Finished</button><br>
+            <button onclick="reviews()" id="review_button" style="display: none;">Review</button>
+            <br>
+            <form id="review" name="review" style="display: none;" onsubmit="reviewForm(); return false;"> 
+                <div class="input-field">
+                    <input type="text" id="owner_id" name="owner_id" placeholder="Enter owner_id"
+                           required><br>
+                    <input type="text" id="keeper_id" name="keeper_id" placeholder="Enter keeper_id"
+                           required> <br>
+                    <input type="text" id="booking_id" name="booking_id" placeholder="Enter booking_id"
+                           required> <br>
+                    <input type="text" id="reviewText" name="reviewText" placeholder="Enter review"
+                           required> <br>
+                    <input type="text" id="reviewScore" name="reviewScore" placeholder="Enter score"
+                           required>
+                </div>
+                <input type="submit" value="Leave review" id="submitBooking">
+                <div id="re"></div>
+            </form>
+            <br>
+            <div id="status_output"></div>
+        </div>
+
+    <center>
+        <div id="log" class="sign-container" style="position: relative ; bottom: -5cm; color: gray">
+            <form id="loginForm" name="loginForm" onsubmit='loginOwner(); return false;'>
+                <img class="profile-image" src="img/cat.jpeg" >
+                <h1 style=" position: relative; top: -150px;">Log in</h1>
+                <input type="text" id="username" name="username" placeholder="Enter your name"
+                       style=" position: relative; top: -120px;" required><br>
+                <input type="password" id="password" name="password" placeholder="Enter your password"
+                       style=" position: relative; top: -120px;" required><br>
+                <input type="submit" value="Login" id="submitButton" style=" position: relative; top: -120px;"><br>
+                <button onclick="back()" style=" position: relative; top: -100px;">Go back</button>
+            </form>
+        </div>
+        <div id="options" style="display: none; color: black;" class="info-container">
+            <div id="logIn" style="display: none;"> 
+                <h2>Your profile</h2>
+                <table>
+                    <thead style="background-color: gray;">
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Telephone</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="owner"></tbody>
+                </table>
+            </div>
+            <br>
+            <h2>Your pet</h2>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>pet_id</th>
+                        <th>Name</th>
+                        <th>type</th>
+                        <th>breed</th>
+                        <th>gender</th>
+                    </tr>
+                </thead>
+                <tbody id="pet_owner"></tbody>
+            </table>
+
+            <br>
+            
+            <button onclick="editOwner()" style="top: 80px;">Edit your profile</button>
+            <br><br>
+            <button id="register_pet" onclick="submitPet()" style="top: 80px; display: none;">Register your pet</button>
+            <br><br>
+            <button onclick="availableKeepers()" style="top: 80px;">See the available keepers</button>
+            <br>
+            <div id="avKeepers" style="display: none;"> 
+                <table>
+                    <thead style="background-color: gray;">
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Telephone</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="available_table"></tbody>
+                </table>
+            </div>
+            <br>
+            <button onclick="bookings()" style="top: 80px;">Make a booking</button>
+            <br>
+            <form id="booking" name="booking" style="display: none;" onsubmit="bookingForm(); return false;"> 
+                <div class="input-field">
+                    <input type="text" id="owner_id" name="owner_id" placeholder="Enter owner_id"
+                           required><br>
+                    <input type="text" id="pet_id" name="pet_id" placeholder="Enter pet_id"
+                           required><br>
+                    <input type="text" id="keeper_id" name="keeper_id" placeholder="Enter keeper_id"
+                           required><br>
+                    <label for="fromDate" style="font-size: 20px;">Start date:</label>
+                    <input type="date" id="fromDate" name="fromDate" style="font-size: 20px;">
+                    <br>
+                    <label for="toDate" style="font-size: 20px;">End date:</label>
+                    <input type="date" id="toDate" name="toDate" style="font-size: 20px;"><br>
+                    <input type="text" id="price" name="price" placeholder="Enter price"
+                           required><br>
+                </div>
+                <input type="submit" value="Book" id="submitBooking">
+                <div id="book"></div>
+            </form>
+            <br>
+            <button onclick="logoutOwner()" style="top: 80px;">Logout</button>
+        </div>
+    </center>
+
+    <script src="js/loginOwner.js" defer></script>
+
+
+</body>
+
+</html>

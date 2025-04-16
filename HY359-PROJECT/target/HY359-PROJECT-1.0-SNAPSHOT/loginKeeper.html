@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Log In</title>
+        <link type="text/css" rel="stylesheet" href="css/loginStyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="icon" href="#" />
+    </head>
+
+    <body>
+
+        <img id="messImg" class="profile-image" src="img/message1.jpeg" style="float: right; top: 0px; width: 60px;
+             height: 60px; display: none;" onclick="keeper_messages();">
+        <img id="alertImg" class="profile-image" src="img/alert.jpeg" style="float: right; top: 2cm; left:1.6cm; width: 60px;
+             height: 60px; display: none;" onclick="keeper_rent();">
+        <img id="infoImg" class="profile-image" src="img/info.jpeg" style="float: right; top: 4cm; left: 3.2cm; width: 60px;
+             height: 60px; display: none;" onclick="keeper_info();">
+
+        <div id="messageContainer" style="display: none; color: black;" class="message-container">
+            <h3>Your messages</h3>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>booking_id</th>
+                        <th>sender</th>
+                        <th>message</th>
+                    </tr>
+                </thead>
+                <tbody id="message_table"></tbody>
+            </table>
+            <br><br>
+            <h3>Send a message</h3>
+            <form id="messageForm" name="messageForm" onsubmit='messagePost(); return false;' style="">
+                <input type="text" id="sender" name="sender" placeholder="keeper/owner"
+                       required><br>
+                <input type="text" id="booking_id" name="booking_id" placeholder="Enter booking_id"
+                       required><br>
+                <input type="text" id="message" name="message" placeholder="Enter message"
+                       required><br>
+                <input type="submit" value="Send" id="submitButton">
+                <div id="message_output"></div>
+            </form>
+        </div>
+        <div id="requests" style="display: none; color: black;" class="message-container" >
+            <h3>Request</h3>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>pet_id</th>
+                        <th>fromdate</th>
+                        <th>todate</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody id="request_table"></tbody>
+            </table>
+            <h3>Pet's info</h3>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>owner_id</th>
+                        <th>name</th>
+                        <th>type</th>
+                        <th>breed</th>
+                        <th>gender</th>
+                    </tr>
+                </thead>
+                <tbody id="pet_table"></tbody>
+            </table>
+            <br>
+            <button onclick="reject()" >Reject</button>
+            <button onclick="accept()" >Accept</button>
+            <br>
+            <div id="status_output"></div>
+        </div>
+
+        <div id="info" style="display: none; color: black;" class="message-container">
+            <h3>Keeper Info</h3>
+            <h4>Num of bookings: </h4>
+            <div id='num_bookings'></div>
+            <h3>All the finished</h3>
+                <table>
+                    <thead style="background-color: gray; ">
+                        <tr>
+                            <th>booking_id</th>
+                            <th>owner_id</th>
+                            <th>pet_id</th>
+                            <th>fromDate</th>
+                            <th>toDate</th>
+                            <th>status</th>
+                            <th>price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fin_table"></tbody>
+                </table>
+                <h3>All your reviews</h3>
+                <table>
+                    <thead style="background-color: gray; ">
+                        <tr>
+                            <th>review_id</th>
+                            <th>owner_id</th>
+                            <th>reviewText</th>
+                            <th>reviewScore</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviews_table"></tbody>
+                </table>
+        </div>
+
+    <center>
+        <div id="log" class="sign-container" style="position: relative ; bottom: -5cm; color: gray">
+
+            <form id="loginForm" name="loginForm" onsubmit='loginKeeper(); return false;'>
+                <img class="profile-image" src="img/cat3.jpeg" >
+                <h1 style=" position: relative; top: -150px;">Log in</h1>
+                <input type="text" id="username" name="username" placeholder="Enter your name"
+                       style=" position: relative; top: -120px;" required><br>
+                <input type="password" id="password" name="password" placeholder="Enter your password"
+                       style=" position: relative; top: -120px;" required><br>
+                <div id="login_output"></div><br>
+                <input type="submit" value="Login" id="submitButton" style=" position: relative; top: -120px;"><br>
+                <button onclick="back()" style=" position: relative; top: -100px;">Go back</button>
+
+            </form>
+        </div>
+
+        <div id="options" style="display: none; color: black;" class="info-container">
+
+            <div id="logIn" style="display: none; ">
+                <h2>Your profile</h2>
+                <table>
+                    <thead style="background-color: gray;">
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Telephone</th>
+                        </tr>
+                    </thead>
+                    <tbody id="keeper_table"></tbody>
+                </table>
+            </div>
+            <br><br>
+            <button onclick="editKeeper()" >Edit your profile</button>
+            
+            <br><br>
+            <div id='questions'>
+                <h3>ChatGPT question</h3>
+                <input type="text" id="user-input" placeholder="Type your question">
+                <button id="submit">Send</button>
+                <p id="output"></p>
+            </div>
+<!--
+            <script>
+                const APIKEY = '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'
+                const button = document.querySelector('#submit')
+                const outputElement = document.querySelector('#output')
+                const inputElement = document.querySelector('#user-input')
+                async function getMessage() {
+                    console.log('clicked')
+                    const options = {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${APIKEY}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-3.5-turbo",
+                            messages: [{role: "user", content: inputElement.value}],
+                            max_tokens: 100
+                        })
+                    }
+                    try {
+                        const response = await fetch('https://api.openai.com/v1/chat/completions', options)
+                        const data = await response.json()
+                        console.log(data);
+                        outputElement.textContent = data.choices[0].message.content
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+                button.addEventListener('click', getMessage());
+            </script>-->
+
+            <br>
+            <button onclick="logoutKeeper()">Logout</button>
+        </div>
+
+    </center>
+
+    <script src="js/loginKeeper.js" defer></script>
+
+</body>
+
+</html>

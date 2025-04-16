@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Log In</title>
+        <link type="text/css" rel="stylesheet" href="css/loginStyle.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="js/logInScript.js" defer></script>
+        <link rel="icon" href="#" />
+    </head>
+
+    <body>
+    <center>
+        <div id="log" class="sign-container" style="position: relative ; bottom: -5cm; color: gray">
+            <form id="loginForm" name="loginForm" onsubmit='loginAdmin(); return false;'>
+                <img class="profile-image" src="img/dog2.jpeg" >
+                <h1 style=" position: relative; top: -150px;">Log in</h1>
+                <input type="text" id="username" name="username" placeholder="Enter username"
+                       style=" position: relative; top: -120px;" required><br>
+                <input type="password" id="password" name="password" placeholder="Enter password"
+                       style=" position: relative; top: -120px;" required><br>
+                <div id="output" style=" position: relative; top: -120px;"></div><br>
+                <input type="submit" value="Login" id="submitButton" style=" position: relative; top: -120px;"><br>
+                <button onclick="back()" style=" position: relative; top: -100px;">Go back</button>
+            </form>
+        </div>
+        <div id="adminOptions" style="display: none; color: black;" class="info-container">
+            <h2>Welcome administrator</h2>
+            <h4>All keepers</h4>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Birthday</th>
+                        <th>Telephone</th>
+                        <th>Id</th>
+                    </tr>
+                </thead>
+                <tbody id="keep"></tbody>
+            </table>
+            <h4>All owners</h4>
+            <table>
+                <thead style="background-color: gray;">
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Birthday</th>
+                        <th>Telephone</th>
+                        <th>Id</th>
+                    </tr>
+                </thead>
+                <tbody id="own"></tbody>
+            </table>
+            <br>
+            <input type="text" id="keeper_id" name="keeper_id" placeholder="Enter keeper_id"
+                   required>
+
+            <button onclick="deleteKeeper()">Delete Pet Keeper</button>
+            <br>
+            <input type="text" id="owner_id" name="owner_id" placeholder="Enter owner_id"
+                   required>
+
+            <button onclick="deleteOwner()">Delete Pet Owner</button>
+
+            <br>
+            <div id="delOutput"></div>
+            <h3 style="text-align: left;">Statistics</h3>
+
+            <div id='statistics' style="text-align: left; font-size: 18px;"></div>
+            <div id='statistics_d'style="text-align: left; font-size: 18px;"></div>
+            <div id='total_income' style="text-align: left; font-size: 18px;"></div>
+            <div id='income' style="text-align: left; font-size: 18px;"></div>
+            <div id='keeper' style="text-align: left; font-size: 18px;"></div>
+            <div id='owner' style="text-align: left; font-size: 18px;"></div>
+            <div class="chart-container">
+                <canvas id="catsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="dogsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="keepersChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="ownersChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="incomeChart"></canvas>
+            </div>
+
+
+        </div>
+    </center>
+
+
+</body>
+
+</html>

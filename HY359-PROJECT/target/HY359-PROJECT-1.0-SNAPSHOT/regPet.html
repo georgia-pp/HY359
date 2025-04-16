@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pet</title>
+        <link type="text/css" rel="stylesheet" href="css/loginStyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    </head>
+    <body>
+    <center>
+        <form id="myPet" name="myPet" onsubmit='add_pet();return false;' style="background-color: grey; padding: 100px;
+              background-color: gray;
+              box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+              border-radius: 10px;
+              width: 30cm; " >
+            <h1>Registration Form</h1>
+            <p>Please fill all the required fields</p>
+            <h2>Pet's Data:</h2>
+
+            <input type="text" id="pet_id" name="pet_id" placeholder="Enter your pet id"
+                   required>
+            <input type="text" id="owner_id" name="owner_id" placeholder="Enter your owner id"
+                   required>
+            <input type="text" id="name" name="name" placeholder="Enter your pet name"
+                   required>
+            <br>
+            <select id="type" name="type" class="styledDropdown">
+                <option value="" selected disabled>Choose type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+            </select>
+
+            <br>
+            <input type="text" id="breed" name="breed" placeholder="Enter your pet breed"
+                   required><br>
+
+            <select id="gender" name="gender" class="styledDropdown">
+                <option value="" selected disabled>Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <br>
+            <input type="number" id="birthyear" name="birthyear" placeholder="Enter birthyear"
+                   required>
+            <br>
+            <input type="text" id="weight" name="weight" placeholder="Enter your pet weight"
+                   required>
+            <br>
+
+            <textarea id="description" name="description"></textarea>
+
+            <br>
+
+            <input type="text" id="photo" name="photo" placeholder="Enter your pet photo"
+                   required>
+            <br>
+
+
+            <input type="submit" value="Register" id="submitButton">
+            <div id="signUpInfo"></div>
+        </form>
+    </center>
+    <script src="js/regScript.js" defer></script>
+</body>
+</html>

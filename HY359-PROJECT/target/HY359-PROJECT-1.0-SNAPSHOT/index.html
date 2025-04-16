@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title> PET-CARE </title>
+        <link type="text/css" rel="stylesheet" href="css/buttons.css">
+        <link rel="icon" href="#" />
+
+    </head>
+    <body>
+        <header style="display: flex; align-items: center; justify-content: space-between;">
+
+            <div class="sign-container" style="position: relative ; right: -200px; bottom: -40px;">
+                <h1 style="font-size: 50px; color: gray; position: relative ; right: -10px; top: -5cm;">Welcome to Pet-care</h1>
+                <center style="position: relative; top: -1.5cm;">
+                    <div id="start" style="display: block;">
+                        <button class="oval-button" onclick="login()"><b>Log in</b></button>
+                        <br><br>
+                        <p>or create new account</p>
+                        <br>
+                        <button class="oval-button" onclick="signup()"><b>Sign up</b></button>
+                    </div>
+
+                    <div id="login" style="display: none;">
+                        <button class="oval-button" onclick="logInKeeper()" style=" width: 150px"><b>Log in as keeper</b></button>
+                        <button class="oval-button" onclick="logInOwner()" style="width: 150px"><b>Log in as owner</b></button>
+                        <br>
+                        <button class="oval-button" onclick="logInadmin()" style="width: 150px"><b>Administrator</b></button>
+                        <br>
+                        <button class="oval-button" onclick="back()"><b>Back</b></button>
+                    </div>
+
+                    <div id="signup" style="display: none;">
+                        <button class="oval-button" onclick="regKeeper()" style="width: 150px"><b>Sign up as keeper</b></button>
+                        <button class="oval-button" onclick="regOwner()" style="width: 150px"><b>Sign up as owner</b></button>
+                        <br>
+                        <button class="oval-button" onclick="back()"><b>Back</b></button>
+                    </div>
+
+                </center>
+
+            </div>
+
+            <img src="img/dog.jpeg"
+                 style="max-width: 30%; height: auto; position: relative ; bottom: -10px; right: -250px; border-radius: 10px;">
+        </header>
+
+        <div class="row">
+            <article>
+                <section>
+                    <h1>A note for dogs</h1>
+                    <h4>Food Allergies in Dogs</h4>
+                    <p style="font-size: 20px;">The go-to treats for dogs are usually meat-based food items from the table. However, not all types of meat are safe for all dogs.
+                        <br>Some dogs have food allergies and the most common ones are triggered by different types of proteins. The most common canine 
+                        food allergens include the following:<br>
+                        1.Beef<br>
+                        2.Chicken<br>
+                        3.Eggs<br>
+                        4.Fish (or seafood)<br>
+                        5.Dairy (canine allergy to dairy is a different condition from canine lactose intolerance) <br><br>
+                        Note: Though less common, some canines have allergies that are triggered by grains. If you would like to learn more
+                        about testing a dog for allergies (in a safe and controlled clinic environment,) consult your local veterinarian.
+                        Keeping in mind the feeding behavior of dogs, as well as the possibility of canine food allergies, pet parents can be more conscious
+                        of the treats they select for their furry friend. 
+                    </p>
+
+                </section>
+                <section>
+                    <h1>A note for cats</h1>
+                    <h4>Food Allergies in Cats</h4>
+                    <p style="font-size: 20px;">Although all meaty treats may seem safe for cats, some cats have food allergies to certain types of meat.<br>
+                        In fact, the most common feline food allergens include the following:  <br>
+                        1.Beef<br>
+                        2.Fish (or seafood)<br>
+                        3.Egg<br>
+                        4.Chicken or turkey<br>
+                        5.Dairy (feline allergy to dairy is a different condition from feline lactose intolerance)<br> 
+                        With the knowledge that cats are obligate carnivores and that some cats may have specific allergies, pet parents
+                        can make the best possible choices when it comes to selecting cat treats.
+                    </p> 
+
+
+
+
+
+
+                </section>
+                <section>
+                    <h1>Meet our pet keepers:</h1>
+
+                    <table>
+                        <thead style="background-color: gray; color: black;">
+                            <tr>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Birthday</th>
+                                <th>Telephone</th>
+                            </tr>
+                        </thead>
+                        <tbody id="av"></tbody>
+                    </table>
+                </section>
+            </article>
+            <aside>
+                <section>
+                    <h3>Fun facts</h3>
+                    <ul style="font-size: 18px; ">
+                        <li>A dog's nose print is unique, much like a person's fingerprint</li>
+                        <li>Seventy percent of people sign their dog's name on their holiday cards</li>
+                        <li>Human blood pressure goes down when petting a dog and so does the dog's</li>
+                        <li>All puppies are born deaf</li>
+                        <li>Dalmatians are born completely white. They develop their spots as they get older</li>
+                        <li>Cats are lactose intolerant</li>
+                        <li>Cats only meow to humans</li>
+                        <li>Kittens are born with blue eyes</li>
+                        <li>Cats just choose to ignore you</li>
+                        <li>More cats are adopted than dogs</li>
+
+                    </ul>
+                </section>
+                <section>
+                    <h3>Links for similar sites</h3>
+                    <ul style="font-size: 18px;">
+                        <li><a href="https://www.i-pet.gr/">I-Pet</a></li>
+                        <li><a href="https://allaboutpets.gr/katoikidia-zoa-gia-mesa-sto-spiti/">Allaboutpets</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>You can find us here</h3>
+                    <center>
+                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                        <a href="https://twitter.com/" class="fa fa-twitter"></a>
+                        <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                        <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    </center>
+                </section>
+            </aside>
+        </div>
+
+        <footer>
+            <h4>Group 67</h4>
+            <p>csd4831 & csd4781</p>
+        </footer>
+        <script src="js/buttons.js" defer></script>
+    </body>
+</html>
